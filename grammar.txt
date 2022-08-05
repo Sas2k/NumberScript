@@ -5,6 +5,7 @@
 4 <- Compare
 % <- comment
 ^ <- Math-Operation-Start
+? : <- If Else
 example:
     %comment
     0 3a5 2a
@@ -27,3 +28,9 @@ example 3:
 
     Output:
         True
+
+example 4:
+    0
+    3a:1
+    3b:1
+    ?a=b(2hello):2bye

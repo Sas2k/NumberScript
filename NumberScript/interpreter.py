@@ -1,14 +1,43 @@
+def Checker(re_code: str, variables: dict) -> bool:
+    if "=" in re_code:
+        code = re_code.split("=")
+        if code[0] in variables:
+            code[0] = variables[code[0]]
+        if code [1] in  variables:
+            code[1] = variables[code[1]]
+        return code[0] == code[1]
+
+    elif "!" in re_code:
+        code = re_code.split("!")
+        if code[0] in variables:
+            code[0] = variables[code[0]]
+        if code [1] in  variables:
+            code[1] = variables[code[1]]
+        return code[0] != code[1]
+
+    elif "<" in re_code:
+        code = re_code.split("<")
+        if code[0] in variables:
+            code[0] = variables[code[0]]
+        if code [1] in  variables:
+            code[1] = variables[code[1]]
+        return code[0] < code[1]
+
+    elif ">" in re_code:
+        code = re_code.split(">")
+        if code[0] in variables:
+            code[0] = variables[code[0]]
+        if code [1] in  variables:
+            code[1] = variables[code[1]]
+        return code[0] > code[1]
+
+
 class Interpreter():
     def __init__(self):
         pass
 
-    def interpret(code: str) -> str:
+    def interpret(self, code: str) -> str:
         code = code.split(" ")
-        if "\n" in code:
-            codes = ""
-            for i in range(len(code)):
-                codes += code[i]
-            code = codes.split("\n")
 
         variables = {}
         for j in range(0, len(code)):
@@ -100,61 +129,15 @@ class Interpreter():
             
             if code[j].startswith("4"):
                 re_code = code[j].replace("4", "", 1)
-                if "=" in re_code[0]:
-                    req_code = re_code[0].split("=")
-                    if req_code[0] in variables.keys():
-                        val1 = variables[req_code[0]]
-                    else:
-                        val1 = req_code[0]
-
-                    if req_code[1] in variables.keys():
-                        val2 = variables[req_code[1]]
-                    else:
-                        val2 = req_code[1]
-
-                    return val1 == val2
-
-                elif "!" in re_code[0]:
-                    req_code = re_code[0].split("!")
-                    if req_code[0] in variables.keys():
-                        val1 = variables[req_code[0]]
-                    else:
-                        val1 = req_code[0]
-                    
-                    if req_code[1] in variables.keys():
-                        val2 = variables[req_code[1]]
-                    else:
-                        val2 = req_code[1]
-                    
-                    return val1!=val2
-
-                elif ">" in re_code[0]:
-                    req_code = re_code[0].split(">")
-                    if req_code[0] in variables.keys():
-                        val1 = int(variables[req_code[0]])
-                    else:
-                        val1 = int(req_code[0])
-
-                    if req_code[1] in variables.keys():
-                        val2 = int(variables[req_code[1]])
-                    else:
-                        val2 = int(req_code[1])
-                    
-                    return val1 > val2
-
-                elif "<" in re_code[0]:
-                    req_code = re_code[0].split("<")
-                    if req_code[0] in variables.keys():
-                        val1 = int(variables[req_code[0]])
-                    else:
-                        val1 = int(req_code[0])
-
-                    if req_code[1] in variables.keys():
-                        val2 = int(variables[req_code[1]])
-                    else:
-                        val2 = int(req_code[1])
-                    
-                    return val1 < val2
+                print(Checker(re_code, variables))
+            
+            if code[j].startswith("?"):
+                re_code = code[j].replace("?", "", 1)
+                statements = re_code.split(":")
+                if Checker(statements[0], variables):
+                    self.interpret(Interpreter, statements[1])
+                else:
+                    self.interpret(Interpreter, statements[2])
 
             if code[j] in variables.keys():
                 print(variables[code[j]])

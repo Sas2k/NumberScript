@@ -22,29 +22,6 @@ help = """
 4 <- Compare
 % <- comment
 ^ <- Math-Operation-Start
-example:
-    %comment
-    0 3a5 2a
-
-    output:
-        5
-
-example 2:
-    %Math-Operation-Start
-    0 ^1+1 1
-
-    output:
-        2
-
-example 3:
-    %If-Else
-    0
-    3a:1
-    4a=1
-    1
-
-    Output:
-        True
 """
 
 space = ""
@@ -57,6 +34,7 @@ for k in range(0, len(os.name)):
 if args.file:
     with open(args.file, "r") as file:
         code = file.read()
+        code = code.replace("\n", " ")
         Interpreter.interpret(code)
 else:
     print(f"""
@@ -74,4 +52,4 @@ else:
         elif code == "help":
             print(help)
         else:
-            Interpreter.interpret(code)
+            Interpreter.interpret(Interpreter, code)
