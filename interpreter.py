@@ -4,10 +4,12 @@ class Interpreter():
 
     def interpret(code: str) -> str:
         code = code.split(" ")
-        codes = ""
-        for i in range(len(code)):
-            codes += code[i]
-        code = codes.split("\n")
+        if "\n" in code:
+            codes = ""
+            for i in range(len(code)):
+                codes += code[i]
+            code = codes.split("\n")
+
         variables = {}
         for j in range(0, len(code)):
             if code[j].startswith("0"):
@@ -28,9 +30,73 @@ class Interpreter():
                     print(code[j][1:])
 
             if code[j].startswith("3"):
-                vars = code[j].split(":")
-                var_name = vars[0].replace("3", "")
-                variables[var_name] = vars[1]
+                vars = code[j].replace("3", "", 1).split(":")
+                var_name = vars[0]
+                var_content = vars[1]
+                variables[var_name] = var_content
+
+            if code[j].startswith("^"):
+                removed_code = code[j].replace("^", "")
+
+                if "+" in removed_code:
+                    removed_code = removed_code.split("+")
+                    for x in range(0, len(removed_code)):
+                        if removed_code[x] in variables.keys():
+                            removed_code[x] = int(variables[removed_code[x]])
+                        else:
+                            removed_code[x] = int(removed_code[x])
+                    print(sum(removed_code))
+
+                elif "-" in removed_code:
+                    removed_code = removed_code.split("-")
+
+                    for x in range(0, len(removed_code)):
+                        if removed_code[x] in variables.keys():
+                            removed_code[x] = int(variables[removed_code[x]])
+                        else:
+                            removed_code[x] = int(removed_code[x])
+                    
+                    max_num = max(removed_code)
+                    removed_code.pop(removed_code.index(max_num))
+
+                    for j in range(0, len(removed_code)):
+                        min_total = max_num - removed_code[j]
+
+                    print(min_total)
+
+                elif "*" in removed_code:
+                    removed_code = removed_code.split("*")
+
+                    for x in range(0, len(removed_code)):
+                        if removed_code[x] in variables.keys():
+                            removed_code[x] = int(variables[removed_code[x]])
+                        else:
+                            removed_code[x] = int(removed_code[x])
+                    
+                    product = 1
+                    for j in range(0, len(removed_code)):
+                        product *= removed_code[j]
+
+                    print(product)
+
+                elif "/" in removed_code:
+                    removed_code = removed_code.split("/")
+
+                    for x in range(0, len(removed_code)):
+                        if removed_code[x] in variables.keys():
+                            removed_code[x] = int(variables[removed_code[x]])
+                        else:
+                            removed_code[x] = int(removed_code[x])
+                    
+                    product = max(removed_code)
+                    removed_code.pop(removed_code.index(product))
+                    for j in range(0, len(removed_code)):
+                        product = product / removed_code[j]
+
+                    print(product)
 
             if code[j].startswith("%"):
                 continue
+            
+            if code[j] in variables.keys():
+                print(variables[code[j]])

@@ -13,6 +13,10 @@ if args.file:
         code = file.read()
         Interpreter.interpret(code)
 else:
+    print("""
+        NumberScript Shell: Type 'exit' to exit.
+        Version: 1.0
+    """)
     while run:
         code = input(">")
         if code == "exit":

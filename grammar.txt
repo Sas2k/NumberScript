@@ -3,9 +3,17 @@
 2 <- print
 3 <- var
 % <- comment
+^ <- Math-Operation-Start
 example:
     %comment
     0 3a5 2a
 
     output:
         5
+
+example 2:
+    %Math-Operation-Start
+    0 ^1+1 1
+
+    output:
+        2
