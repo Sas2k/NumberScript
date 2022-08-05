@@ -35,5 +35,6 @@ You can use _ or -.
 
 ## To-Do
 
-[] Arithmetic-operations
-[] If-Else
+- [ ] Arithmetic-operations
+
+- [ ] If-Else
