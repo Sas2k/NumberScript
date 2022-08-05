@@ -8,17 +8,19 @@ possibly the world's most simplest and restricted language.
 
 - No spaces (Yup, you read that right)
 - Comments
-- Only 4 commands
+- Only 5 commands
 - A shell and a runner
+- No loops or If-else (Who needs 'em)
 
 ## Docs
 
 ### commands
 
 ```
-commands:  0  |  1  |  2  |  3  |
+commands:  0  |  1  |  2  |  3  | 4
 comments: %
 arithmetic: ^
+Compare: = | ! | < | >
 operations: + | - | * | / |
 ```
 
@@ -34,6 +36,7 @@ A basic program
 0 %Starts %The %Program
 3a:Hello %Sets %The %Variable %a %to %Hello
 2a %Displays %a
+4a=Hello|2a|2Bye %Check-A-If-Its-Hello-Then-Display-It-Else-Display-Bye
 1 %Ends %The %program
 ```
 

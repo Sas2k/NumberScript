@@ -2,6 +2,7 @@
 1 <- end
 2 <- print
 3 <- var
+4 <- Compare
 % <- comment
 ^ <- Math-Operation-Start
 example:
@@ -17,3 +18,13 @@ example 2:
 
     output:
         2
+
+example 3:
+    %If-Else
+    0
+    3a:1
+    4a=1
+    1
+
+    Output:
+        True

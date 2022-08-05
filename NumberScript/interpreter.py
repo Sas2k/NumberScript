@@ -98,5 +98,63 @@ class Interpreter():
             if code[j].startswith("%"):
                 continue
             
+            if code[j].startswith("4"):
+                re_code = code[j].replace("4", "", 1)
+                if "=" in re_code[0]:
+                    req_code = re_code[0].split("=")
+                    if req_code[0] in variables.keys():
+                        val1 = variables[req_code[0]]
+                    else:
+                        val1 = req_code[0]
+
+                    if req_code[1] in variables.keys():
+                        val2 = variables[req_code[1]]
+                    else:
+                        val2 = req_code[1]
+
+                    return val1 == val2
+
+                elif "!" in re_code[0]:
+                    req_code = re_code[0].split("!")
+                    if req_code[0] in variables.keys():
+                        val1 = variables[req_code[0]]
+                    else:
+                        val1 = req_code[0]
+                    
+                    if req_code[1] in variables.keys():
+                        val2 = variables[req_code[1]]
+                    else:
+                        val2 = req_code[1]
+                    
+                    return val1!=val2
+
+                elif ">" in re_code[0]:
+                    req_code = re_code[0].split(">")
+                    if req_code[0] in variables.keys():
+                        val1 = int(variables[req_code[0]])
+                    else:
+                        val1 = int(req_code[0])
+
+                    if req_code[1] in variables.keys():
+                        val2 = int(variables[req_code[1]])
+                    else:
+                        val2 = int(req_code[1])
+                    
+                    return val1 > val2
+
+                elif "<" in re_code[0]:
+                    req_code = re_code[0].split("<")
+                    if req_code[0] in variables.keys():
+                        val1 = int(variables[req_code[0]])
+                    else:
+                        val1 = int(req_code[0])
+
+                    if req_code[1] in variables.keys():
+                        val2 = int(variables[req_code[1]])
+                    else:
+                        val2 = int(req_code[1])
+                    
+                    return val1 < val2
+
             if code[j] in variables.keys():
                 print(variables[code[j]])
