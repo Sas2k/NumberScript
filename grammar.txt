@@ -1,0 +1,11 @@
+0 <- start
+1 <- end
+2 <- print
+3 <- var
+% <- comment
+example:
+    %comment
+    0 3a5 2a
+
+    output:
+        5
