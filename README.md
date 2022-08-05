@@ -4,6 +4,14 @@
 
 possibly the world's most simplest and restricted language.
 
+## Installation
+
+### pip
+
+```bash
+pip install NumberScript
+```
+
 ## Features
 
 - No spaces (Yup, you read that right)

@@ -62,7 +62,7 @@ else:
     print(f"""
         +------------------------------------------+
         | NumberScript Shell: Type 'exit' to exit. |
-        | Version: 1.6.0 Machine: {os.name} {space}  |
+        | Version: 1.6.1 Machine: {os.name} {space}|
         | Type 'help' for more information.        |
         | {current_time}                                 |
         +------------------------------------------+
