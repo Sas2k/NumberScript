@@ -135,9 +135,14 @@ class Interpreter():
                 re_code = code[j].replace("?", "", 1)
                 statements = re_code.split(":")
                 if Checker(statements[0], variables):
-                    self.interpret(Interpreter, statements[1])
+                    true_statements = statements[1].replace("\n", " ")
+                    self.interpret(Interpreter, true_statements)
                 else:
-                    self.interpret(Interpreter, statements[2])
+                    false_statements = statements[2].replace("\n", " ")
+                    self.interpret(Interpreter, false_statements)
 
             if code[j] in variables.keys():
                 print(variables[code[j]])
+
+            if code[j].startswith("5"):
+                pass

@@ -18,18 +18,19 @@ pip install NumberScript
 - Comments
 - Only 5 commands
 - A shell and a runner
-- No loops or If-else (Who needs 'em)
+- No loops (Who needs 'em)
 
 ## Docs
 
 ### commands
 
 ```
-commands:  0  |  1  |  2  |  3  | 4
+commands:  0  |  1  |  2  |  3  | 4 | 5
 comments: %
 arithmetic: ^
 Compare: = | ! | < | >
 operations: + | - | * | / |
+If-Else: ? :
 ```
 
 >NOTE: You can't have different arithmetic signs in a single ^
@@ -57,10 +58,21 @@ Addition
 ^a+b %NoSpacesPlease
 1
 ```
+
+If else
+```
+%Is-This-lucky
+0
+3lucky_num:9
+?lucky_num=8:28-Is-The-Lucky-Num:28-Is-Not-Lucky
+?lucky_num=9:29-Is-The-Lucky-Num:29-Is-Not-Lucky
+?lucky_num=10:210-Is-The-Lucky-Num:210-Is-Not-Lucky
+1
+```
 >So, since there aren't any spaces what can we use instead of them?
 
 You can use _ or -.
 
 ## To-Do
 
-- [ ] If-Else
+- [ ] Add loops

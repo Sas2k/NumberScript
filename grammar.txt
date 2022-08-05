@@ -33,4 +33,4 @@ example 4:
     0
     3a:1
     3b:1
-    ?a=b(2hello):2bye
+    ?a=b:2hello:2bye

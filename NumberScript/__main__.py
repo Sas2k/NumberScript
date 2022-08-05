@@ -17,11 +17,13 @@ run = True
 help = """
 0 <- start
 1 <- end
-2 <- print
-3 <- var
-4 <- Compare
+2thing <- print
+3name:value <- var
+4number[=/!/</>] <- Compare
+5 <- pass
 % <- comment
-^ <- Math-Operation-Start
+^number[+/-/\//]number <- Math-Operation-Start
+?conditon:True:False <- If-Else
 """
 
 space = ""
@@ -35,12 +37,12 @@ if args.file:
     with open(args.file, "r") as file:
         code = file.read()
         code = code.replace("\n", " ")
-        Interpreter.interpret(code)
+        Interpreter.interpret(Interpreter, code)
 else:
     print(f"""
         +------------------------------------------+
         | NumberScript Shell: Type 'exit' to exit. |
-        | Version: 1.6.1 Machine: {os.name} {space}|
+        | Version: 1.7.0 Machine: {os.name} {space}|
         | Type 'help' for more information.        |
         | {current_time}                                 |
         +------------------------------------------+
