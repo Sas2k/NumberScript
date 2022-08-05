@@ -1,5 +1,7 @@
 # NumberScript
 
+![PyPI - Downloads](https://img.shields.io/pypi/dm/NumberScript?color=blue&style=for-the-badge)
+
 possibly the world's most simplest and restricted language.
 
 ## Features
