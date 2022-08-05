@@ -1,4 +1,4 @@
-from interpreter import Interpreter
+from . import interpreter
 import argparse
 import os
 from datetime import datetime
@@ -6,6 +6,8 @@ from datetime import datetime
 now = datetime.now()
 
 current_time = now.strftime("%H:%M:%S")
+
+Interpreter = interpreter.Interpreter
 
 parser = argparse.ArgumentParser()
 
