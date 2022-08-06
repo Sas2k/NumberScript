@@ -3,34 +3,17 @@
 2 <- print
 3 <- var
 4 <- Compare
+5 <- pass
+6 <- For-Loop
+    ; = Code split
+    ------------------------------
+    |       6n/7/2n;2hello       |
+    ------------------------------
 % <- comment
 ^ <- Math-Operation-Start
-? : <- If Else
-example:
-    %comment
-    0 3a5 2a
-
-    output:
-        5
-
-example 2:
-    %Math-Operation-Start
-    0 ^1+1 1
-
-    output:
-        2
-
-example 3:
-    0
-    3a:1
-    4a=1
-    1
-
-    Output:
-        True
-
-example 4:
-    0
-    3a:1
-    3b:1
-    ?a=b:2hello:2bye
+? <- If Else
+    : = statement split
+    | = code split
+    ------------------------------
+    |     ?n=1:2n;2hello:2bye    |
+    ------------------------------

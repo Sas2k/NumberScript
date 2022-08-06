@@ -4,16 +4,17 @@ import os
 from datetime import datetime
 
 now = datetime.now()
-
 current_time = now.strftime("%H:%M:%S")
 
 Interpreter = interpreter.Interpreter
 
 parser = argparse.ArgumentParser()
-
 parser.add_argument("-f", "--file", help="file to interpret")
-
+parser.add_argument("-v", "--version", action="store_true", help="show version")
 args = parser.parse_args()
+
+ver = "1.8.0"
+
 run = True
 
 help = """
@@ -23,6 +24,7 @@ help = """
 3name:value <- var
 4number[=/!/</>] <- Compare
 5 <- pass
+6 <- For-loops
 % <- comment
 ^number[+/-/\//]number <- Math-Operation-Start
 ?conditon:True:False <- If-Else
@@ -40,11 +42,13 @@ if args.file:
         code = file.read()
         code = code.replace("\n", " ")
         Interpreter.interpret(Interpreter, code)
+elif args.version:
+    print(f"Version: {ver}")
 else:
     print(f"""
         +------------------------------------------+
         | NumberScript Shell: Type 'exit' to exit. |
-        | Version: 1.7.0 Machine: {os.name} {space}|
+        | Version: {ver} Machine: {os.name} {space}|
         | Type 'help' for more information.        |
         | {current_time}                                 |
         +------------------------------------------+

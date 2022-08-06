@@ -1,6 +1,10 @@
 # NumberScript
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/NumberScript?color=blue&style=for-the-badge)
+![PyPI - Downloads](https://img.shields.io/pypi/dw/NumberScript?color=blue&style=for-the-badge)
+![Discord](https://img.shields.io/discord/1005410273609400402?label=Discord&style=social)
+
+[NumberScript Discord-Invite](https://discord.gg/wRXR72zJ6W)
 
 possibly the world's most simplest and restricted language.
 
@@ -16,16 +20,15 @@ pip install NumberScript
 
 - No spaces (Yup, you read that right)
 - Comments
-- Only 5 commands
+- Only 7 commands
 - A shell and a runner
-- No loops (Who needs 'em)
 
 ## Docs
 
 ### commands
 
 ```
-commands:  0  |  1  |  2  |  3  | 4 | 5
+commands:  0  |  1  |  2  |  3  |  4  |  5  |  6 |  7
 comments: %
 arithmetic: ^
 Compare: = | ! | < | >
@@ -45,34 +48,26 @@ A basic program
 0 %Starts %The %Program
 3a:Hello %Sets %The %Variable %a %to %Hello
 2a %Displays %a
-4a=Hello|2a|2Bye %Check-A-If-Its-Hello-Then-Display-It-Else-Display-Bye
+?a=Hello:2a:2Bye %Check-A-If-Its-Hello-Then-Display-It-Else-Display-Bye
 1 %Ends %The %program
 ```
+You can also have that program like this
+`0 3a:Hello 2a 4a=Hello:2a:2Bye 1`
 
-Addition
+Here is another program where it loops over digits to check if it's lucky
 ```
-%calculating
-0
-3a:4
-3b:8
-^a+b %NoSpacesPlease
-1
-```
-
-If else
-```
-%Is-This-lucky
+%Is-This-lucky:Checks-If-The-Number-Is-Lucky
 0
 3lucky_num:9
-?lucky_num=8:28-Is-The-Lucky-Num:28-Is-Not-Lucky
-?lucky_num=9:29-Is-The-Lucky-Num:29-Is-Not-Lucky
-?lucky_num=10:210-Is-The-Lucky-Num:210-Is-Not-Lucky
+6n\10\?n=lucky_num:2n|2Is-The-Lucky-Number:2n|2Is-Not-The-Number
 1
 ```
->So, since there aren't any spaces what can we use instead of them?
 
-You can use _ or -.
+>So, since there aren't any spaces what can we use instead of them?
+>You can use _ or -.
 
 ## To-Do
 
-- [ ] Add loops
+- [ ] User Input
+- [ ] Functions
+- [ ] Possibly OOP
