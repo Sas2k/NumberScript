@@ -1,36 +1,5 @@
-def Checker(re_code: str, variables: dict) -> bool:
-    """Boolean Checker"""
-    if "=" in re_code:
-        code = re_code.split("=")
-        if code[0] in variables:
-            code[0] = variables[code[0]]
-        if code [1] in  variables:
-            code[1] = variables[code[1]]
-        return code[0] == code[1]
-
-    elif "!" in re_code:
-        code = re_code.split("!")
-        if code[0] in variables:
-            code[0] = variables[code[0]]
-        if code [1] in  variables:
-            code[1] = variables[code[1]]
-        return code[0] != code[1]
-
-    elif "<" in re_code:
-        code = re_code.split("<")
-        if code[0] in variables:
-            code[0] = variables[code[0]]
-        if code [1] in  variables:
-            code[1] = variables[code[1]]
-        return code[0] < code[1]
-
-    elif ">" in re_code:
-        code = re_code.split(">")
-        if code[0] in variables:
-            code[0] = variables[code[0]]
-        if code [1] in  variables:
-            code[1] = variables[code[1]]
-        return code[0] > code[1]
+from functools import reduce
+from operator import mod
 
 def Calculate(removed_code: str, variables: dict) -> int:
     """Calculator"""
@@ -91,6 +60,100 @@ def Calculate(removed_code: str, variables: dict) -> int:
 
         return product
 
+    elif "#" in removed_code:
+        removed_code = removed_code.split("#")
+
+        for x in range(0, len(removed_code)):
+            if removed_code[x] in variables.keys():
+                removed_code[x] = int(variables[removed_code[x]])
+            else:
+                removed_code[x] = int(removed_code[x])
+
+        product = reduce(mod, removed_code)
+        return product
+
+def Checker(re_code: str, variables: dict) -> bool:
+    """Boolean Checker"""
+    if "=" in re_code:
+        code = re_code.split("=")
+        if code[0] in variables:
+            code[0] = variables[code[0]]
+        elif code[0].isdigit():
+            code[0] = int(code[0])
+        elif code[0].startswith("^"):
+            recode = code[0].replace("^", "", 1)
+            code[0] = Calculate(recode, variables)
+
+        if code [1] in  variables:
+            code[1] = variables[code[1]]
+        elif code[1].isdigit():
+            code[1] = int(code[1])
+        elif code[1].startswith("^"):
+            recode = code[1].replace("^", "", 1)
+            code[1] = Calculate(recode, variables)
+        
+        return code[0] == code[1]
+
+    elif "!" in re_code:
+        code = re_code.split("!")
+        if code[0] in variables:
+            code[0] = variables[code[0]]
+        elif code[0].isdigit():
+            code[0] = int(code[0])
+        elif code[0].startswith("^"):
+            recode = code[0].replace("^", "", 1)
+            code[0] = Calculate(recode, variables)
+        
+        if code [1] in  variables:
+            code[1] = variables[code[1]]
+        elif code[1].isdigit():
+            code[1] = int(code[1])
+        elif code[1].startswith("^"):
+            recode = code[1].replace("^", "", 1)
+            code[1] = Calculate(recode, variables)
+
+        return code[0] != code[1]
+
+    elif "<" in re_code:
+        code = re_code.split("<")
+        if code[0] in variables:
+            code[0] = variables[code[0]]
+        elif code[0].isdigit():
+            code[0] = int(code[0])
+        elif code[0].startswith("^"):
+            recode = code[0].replace("^", "", 1)
+            code[0] = Calculate(recode, variables)
+
+        if code [1] in  variables:
+            code[1] = variables[code[1]]
+        elif code[1].isdigit():
+            code[1] = int(code[1])
+        elif code[1].startswith("^"):
+            recode = code[1].replace("^", "", 1)
+            code[1] = Calculate(recode, variables)
+        
+        return code[0] < code[1]
+
+    elif ">" in re_code:
+        code = re_code.split(">")
+        if code[0] in variables:
+            code[0] = variables[code[0]]
+        elif code[0].isdigit():
+            code[0] = int(code[0])
+        elif code[0].startswith("^"):
+            recode = code[0].replace("^", "", 1)
+            code[0] = Calculate(recode, variables)
+        
+        if code [1] in  variables:
+            code[1] = variables[code[1]]
+        elif code[1].isdigit():
+            code[1] = int(code[1])
+        elif code[1].startswith("^"):
+            recode = code[1].replace("^", "", 1)
+            code[1] = Calculate(recode, variables)
+
+        return code[0] > code[1]
+
 class Interpreter():
     """Main Interpreter class"""
 
@@ -131,6 +194,11 @@ class Interpreter():
                 elif var_content.startswith("^"):
                     var_content = var_content.replace("^", "", 1)
                     var_content = Calculate(var_content, variables)
+                elif var_content.startswith("~"):
+                    var_content = var_content.replace("~", "", 1)
+                    var_content = input(var_content)
+                    if var_content.isdigit():
+                        var_content = int(var_content)
                 variables[var_name] = var_content
 
             if code[j].startswith("^"):
@@ -148,10 +216,16 @@ class Interpreter():
                 re_code = code[j].replace("?", "", 1)
                 statements = re_code.split(":")
                 if Checker(statements[0], variables):
-                    true_statements = statements[1].replace("|", " ")
+                    if "|" in statements[1]:
+                        true_statements = statements[1].replace("|", " ")
+                    else:
+                        true_statements = statements[1]
                     self.interpret(Interpreter, true_statements, variables)
                 else:
-                    false_statements = statements[2].replace("|", " ")
+                    if "|" in statements[2]:
+                        false_statements = statements[2].replace("|", " ")
+                    else:
+                        false_statements = statements[2]
                     self.interpret(Interpreter, false_statements, variables)
 
             if code[j] in variables.keys():
@@ -170,3 +244,7 @@ class Interpreter():
                 for x in range(0, repeat_times):
                     self.interpret(Interpreter, repeat_code, variabless)
                     variabless[repeat_name] += 1
+
+            if code[j].startswith("~"):
+                recode = code[j].replace("~", "", 1)
+                input(recode)

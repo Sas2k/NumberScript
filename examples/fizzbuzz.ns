@@ -1,0 +1,5 @@
+%FizzBuzz-Program
+0
+3num:~Enter-Num>
+6n\num\3nm:^n+1;?^nm#15=0:2FizzBuzz:5;?^nm#3=0:2Fizz:5;?^nm#5=0:2Buzz:2nm
+1

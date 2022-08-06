@@ -63,11 +63,12 @@ Here is another program where it loops over digits to check if it's lucky
 1
 ```
 
+You can find more examples in the examples folder.
+
 >So, since there aren't any spaces what can we use instead of them?
 >You can use _ or -.
 
 ## To-Do
 
-- [ ] User Input
 - [ ] Functions
 - [ ] Possibly OOP
