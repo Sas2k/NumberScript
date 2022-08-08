@@ -235,7 +235,7 @@ class Interpreter():
                 pass
 
             if code[j].startswith("6"):
-                recode = code[j].replace("6", "", 1).split("\\")
+                recode = code[j].replace("6", "", 1).split("\\", 2)
                 repeat_name = variables[recode[0]] if recode[0] in variables.keys() else recode[0]
                 repeat_times = int(variables[recode[1]]) if recode[1] in variables.keys() else int(recode[1])
                 repeat_code = recode[2].replace(";", " ")

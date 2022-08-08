@@ -63,8 +63,6 @@ Here is another program where it loops over digits to check if it's lucky
 1
 ```
 
->Also don't try to do nested loops. If-Else is fine but no Nested Loops.
-
 You can find more examples in the examples folder.
 
 >So, since there aren't any spaces what can we use instead of them?
