@@ -6,11 +6,9 @@
 
 [NumberScript Discord-Invite](https://discord.gg/wRXR72zJ6W)
 
-possibly the world's most simplest and restricted language.
+Possibly the world's most simple and restricted language.
 
-## Installation
-
-### pip
+## Installation (pip)
 
 ```bash
 pip install NumberScript
@@ -27,15 +25,13 @@ pip install NumberScript
 
 ## CLI and repl
 
-To use the repl just run,
-
+To use the repl just run
 `python -m NumberScript`
 
-To run a file just use this,
-
+To run a file use
 `python -m NumberScript -f Path/To/File`
 
-### commands
+### Commands
 
 ```
 commands:  0  |  1  |  2  |  3  |  4  |  5  |  6 |  7
@@ -48,10 +44,10 @@ If-Else: ? :
 ```
 
 >NOTE: You can't have different arithmetic signs in a single ^
->    : so you can do this 1+1+2 but not 1+1*2
+>    : meaning you can do 1+1+2 but not 1+1*2
 >    : Also NO SPACES.
 
-### syntax
+### Syntax
 
 A basic program
 ```
@@ -62,10 +58,10 @@ A basic program
 ?a=Hello:2a:2Bye %Check-A-If-Its-Hello-Then-Display-It-Else-Display-Bye
 1 %Ends %The %program
 ```
-You can also have that program like this
+Removing the comments, You can also have this program like
 `0 3a:Hello 2a 4a=Hello:2a:2Bye 1`
 
-Here is another program where it loops over digits to check if it's lucky
+Here is another program that loops over digits to check if they are lucky
 ```
 %Is-This-lucky:Checks-If-The-Number-Is-Lucky
 0
@@ -74,7 +70,7 @@ Here is another program where it loops over digits to check if it's lucky
 1
 ```
 
-You can find more examples in the examples folder.
+You can find more examples in the `examples` folder.
 
 >So, since there aren't any spaces what can we use instead of them?
 >You can use _ or -.
