@@ -9,6 +9,13 @@
     ------------------------------
     |       6n/7/2n;2hello       |
     ------------------------------
+7 <- Function
+    | = code-split
+    $ = section-split
+    , = param-split
+    ------------------------------
+    |     7add_two$a,b$^a+b      |
+    ------------------------------
 % <- comment
 ^ <- Math-Operation-Start
 ? <- If Else

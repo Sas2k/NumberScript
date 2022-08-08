@@ -161,10 +161,11 @@ class Interpreter():
         """Initialize the interpreter"""
         pass
 
-    def interpret(self, code: str, variables_dict: dict = {}) -> str:
+    def interpret(self, code: str, variables_dict: dict = {}, function_dict: dict = {}) -> str:
         """Interprets the code"""
         code = code.split(" ")
         variables = variables_dict
+        functions = function_dict
         for j in range(0, len(code)):
             if code[j].startswith("0"):
                 variables = {}
@@ -248,3 +249,35 @@ class Interpreter():
             if code[j].startswith("~"):
                 recode = code[j].replace("~", "", 1)
                 input(recode)
+
+            if code[j].startswith("7"):
+                recode = code[j].replace("7", "", 1).split("$", 2)
+                function_name = recode[0]
+                function_parameters = recode[1].split(",")
+                function_code = recode[2].split("|")
+                functions[function_name] = [function_parameters, function_code]
+
+            if any(str(key) in code[j] for key in functions.keys()) and not code[j].startswith("7"):
+                recode = code[j].split("$", 1)
+                func_name = functions[recode[0]]
+                func_params = recode[1].split(",")
+                for x in range(0, len(func_params)):
+                    if func_params[x] in variables.keys():
+                        variables[func_name[0][x]] = variables[func_params[x]]
+                    elif func_params[x].isdigit():
+                        variables[func_name[0][x]] = int(func_params[x])
+                    elif func_params[x].startswith("^"):
+                        cal = func_params[x].replace("^", "", 1)
+                        variables[func_name[0][x]] = Calculate(cal, variables)
+                    elif func_params[x].startswith("~"):
+                        inp = func_params[x].replace("~", "", 1)
+                        variables[func_name[0][x]] = input(inp)
+                        if variables[func_name[0][x]].isdigit():
+                            variables[func_name[0][x]] = int(variables[func_name[0][x]])
+                    else:
+                        variables[func_name[0][x]] = func_params[x]
+                func_code = ""
+                for j in range(0, len(func_name[1])):
+                    func_code += func_name[1][j] + " "
+                self.interpret(Interpreter, func_code, variables, functions)
+                

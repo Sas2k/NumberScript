@@ -13,7 +13,7 @@ parser.add_argument("-f", "--file", help="file to interpret")
 parser.add_argument("-v", "--version", action="store_true", help="show version")
 args = parser.parse_args()
 
-ver = "1.9.2"
+ver = "1.9.4"
 
 run = True
 
@@ -25,6 +25,7 @@ help = """
 4number[=/!/</>] <- Compare
 5 <- pass
 6 <- For-loops
+7 <- Function Def
 % <- comment
 ^number[+\-\/\*\#]number <- Math-Operation-Start
 ?conditon:True:False <- If-Else

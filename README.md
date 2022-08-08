@@ -20,7 +20,7 @@ pip install NumberScript
 
 - No spaces (Yup, you read that right)
 - Comments
-- Only 7 commands
+- Only 8 commands
 - A shell and a runner
 
 ## Docs
@@ -39,6 +39,7 @@ To run a file just use this,
 
 ```
 commands:  0  |  1  |  2  |  3  |  4  |  5  |  6 |  7
+input: ~
 comments: %
 arithmetic: ^
 Compare: = | ! | < | >
@@ -80,5 +81,5 @@ You can find more examples in the examples folder.
 
 ## To-Do
 
-- [ ] Functions
+- [ ] Import and library system
 - [ ] Possibly OOP
