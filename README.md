@@ -25,6 +25,16 @@ pip install NumberScript
 
 ## Docs
 
+## CLI and repl
+
+To use the repl just run,
+
+`python -m NumberScript`
+
+To run a file just use this,
+
+`python -m NumberScript -f Path/To/File`
+
 ### commands
 
 ```
