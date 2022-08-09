@@ -1,0 +1,8 @@
+site_name: NumberScript Documentation
+site_url: https://sas2k.github.io/NumberScript
+nav:
+  - Home: index.md
+  - About: about.md
+theme:
+  name: material
+  
