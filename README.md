@@ -1,3 +1,5 @@
+<img src="docs\images\Logo-256.png" alt="Logo of NumberScript"/>
+
 # NumberScript
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/NumberScript?color=blue&style=for-the-badge)
@@ -6,7 +8,7 @@
 
 [NumberScript Discord-Invite](https://discord.gg/wRXR72zJ6W)
 
-Possibly the world's most simple and restricted language.
+Possibly the world's most simplest and restricted language.
 
 ## Installation (pip)
 
@@ -23,6 +25,8 @@ pip install NumberScript
 
 ## Docs
 
+Documentation: https://github.com/Sas2k/NumberScript
+
 ## CLI and repl
 
 To use the repl just run
@@ -36,6 +40,7 @@ To run a file use
 ```
 commands:  0  |  1  |  2  |  3  |  4  |  5  |  6 |  7
 input: ~
+random: *
 comments: %
 arithmetic: ^
 Compare: = | ! | < | >
@@ -58,7 +63,7 @@ A basic program
 ?a=Hello:2a:2Bye %Check-A-If-Its-Hello-Then-Display-It-Else-Display-Bye
 1 %Ends %The %program
 ```
-Removing the comments, You can also have this program like
+You can also have this program like. (Without any new-lines)
 `0 3a:Hello 2a 4a=Hello:2a:2Bye 1`
 
 Here is another program that loops over digits to check if they are lucky

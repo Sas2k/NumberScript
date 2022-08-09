@@ -2,7 +2,15 @@ site_name: NumberScript Documentation
 site_url: https://sas2k.github.io/NumberScript
 nav:
   - Home: index.md
+  - Setting Up/Getting Started: getting-started.md
   - About: about.md
+  - Tutorial:
+    - Basics: Tutorial/basics.md
+    - Variables: Tutorial/Variables.md
+    - If-Else: Tutorial/If-Else.md
 theme:
   name: material
-  
+  logo: images/Logo.png
+  favicon: images/Logo.png
+  palette:
+    primary: black

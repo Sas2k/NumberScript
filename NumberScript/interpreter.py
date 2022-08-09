@@ -1,5 +1,6 @@
 from functools import reduce
 from operator import mod
+from random import randint
 
 def Calculate(removed_code: str, variables: dict) -> int:
     """Calculator"""
@@ -200,7 +201,12 @@ class Interpreter():
                     var_content = input(var_content)
                     if var_content.isdigit():
                         var_content = int(var_content)
+                if var_content.startswith("*"):
+                    var_content = var_content.replace("*", "", 1).split("!", 1)
+                    random_num = randint(int(var_content[0]), int(var_content[1]))
+                    var_content = random_num
                 variables[var_name] = var_content
+                
 
             if code[j].startswith("^"):
                 removed_code = code[j].replace("^", "")
@@ -257,6 +263,12 @@ class Interpreter():
                 function_code = recode[2].split("|")
                 functions[function_name] = [function_parameters, function_code]
 
+            if code[j].startswith("*"):
+                recode = code[j].replace("*", "", 1).split("!", 1)
+                random_num = randint(recode[0], recode[1])
+                print(int(random_num))
+
+
             if any(str(key) in code[j] for key in functions.keys()) and not code[j].startswith("7"):
                 recode = code[j].split("$", 1)
                 func_name = functions[recode[0]]
@@ -274,6 +286,10 @@ class Interpreter():
                         variables[func_name[0][x]] = input(inp)
                         if variables[func_name[0][x]].isdigit():
                             variables[func_name[0][x]] = int(variables[func_name[0][x]])
+                    elif code[j].startswith("*"):
+                        recode = code[j].replace("*", "", 1).split("!", 1)
+                        random_num = randint(recode[0], recode[1])
+                        variables[func_name[0][x]] = int(random_num)
                     else:
                         variables[func_name[0][x]] = func_params[x]
                 func_code = ""
