@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setuptools.setup(
     name="NumberScript",
-    version="1.11.6",
+    version="1.11.7",
     description="possibly the world's most simplest and restricted language.",
     author="Sasen Perera",
     long_description=longest_description,
