@@ -13,7 +13,7 @@ parser.add_argument("-f", "--file", help="file to interpret")
 parser.add_argument("-v", "--version", action="store_true", help="show version")
 args = parser.parse_args()
 
-ver = "1.11.0"
+ver = "1.11.5"
 
 run = True
 
@@ -28,7 +28,7 @@ help = """
 7 <- Function Def
 % <- comment
 ^number[+\-\/\*\#]number <- Math-Operation-Start
-?conditon:True:False <- If-Else
+?condition:True:False <- If-Else
 """
 
 space = ""
@@ -49,7 +49,7 @@ else:
     print(f"""
         +------------------------------------------+
         | NumberScript Shell: Type 'exit' to exit. |
-        | Version: {ver} Machine: {os.name} {space}|
+        | Version: {ver} Machine: {os.name}{space}|
         | Type 'help' for more information.        |
         | {current_time}                                 |
         +------------------------------------------+

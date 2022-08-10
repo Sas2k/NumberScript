@@ -36,7 +36,7 @@ ok, to display a string in the program we can use the `2` command.
 
 You can display output of basic math equations with `^`
 
-> Can: +(add), -(substract), /(divide), *(multiply)
+> Can: +(add), -(subtract), /(divide), *(multiply)
 
 `0 ^100+50 1`
 
@@ -72,7 +72,7 @@ Examples of a sentence,
 
 ### 2) Adding
 
-Here is your second exericise.
+Here is your second exercise.
 Display 2 numbers then display the total (using `2` and `^`)
 
 ```

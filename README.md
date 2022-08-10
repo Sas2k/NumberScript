@@ -38,7 +38,7 @@ To run a file use
 ### Commands
 
 ```
-commands:  0  |  1  |  2  |  3  |  4  |  5  |  6 |  7
+commands:  0  |  1  |  2 (@string.index)  |  3  |  4  |  5  |  6 |  7
 input: ~
 random: *
 comments: %

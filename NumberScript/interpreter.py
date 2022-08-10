@@ -181,14 +181,33 @@ class Interpreter():
                         var_names = list(variables.keys())
                         if var_names[x] == code[j][1:]:
                             print(variables[var_names[x]])
-
+                elif code[j][1:].startswith("@"):
+                    recode = code[j][1:].replace("@", "", 1)
+                    recode = recode.split(".", 1)
+                    if recode[0] in variables.keys():
+                        recode[0] = variables[recode[0]]
+                    if recode[1] in variables.keys():
+                        recode[1] = variables[recode[1]]
+                    try:
+                        recode = recode[0][int(recode[1])]
+                        print(recode)
+                    except IndexError:
+                        return print("Error: Index Out Of Range")
+                    except ValueError:
+                        return print("Error: Index Not A Number")
                 else:
                     print(code[j][1:])
 
             if code[j].startswith("3"):
                 vars = code[j].replace("3", "", 1).split(":")
-                var_name = vars[0]
-                var_content = vars[1]
+                try:
+                    var_name = vars[0]
+                except:
+                    return print("Error: Variable name not defined")
+                try:
+                    var_content = vars[1]
+                except:
+                    return print("Error: Variable content not defined")
                 if var_content in variables.keys():
                     var_content = variables[var_content]
                 elif var_content.isdigit():
@@ -201,10 +220,24 @@ class Interpreter():
                     var_content = input(var_content)
                     if var_content.isdigit():
                         var_content = int(var_content)
-                if var_content.startswith("*"):
+                elif var_content.startswith("*"):
                     var_content = var_content.replace("*", "", 1).split("!", 1)
                     random_num = randint(int(var_content[0]), int(var_content[1]))
                     var_content = random_num
+                elif var_content.startswith("@"):
+                    var_content = var_content.replace("@", "", 1)
+                    var_content = var_content.split(".", 1)
+                    if var_content[0] in variables.keys():
+                        var_content[0] = variables[var_content[0]]
+                    if var_content[1] in variables.keys():
+                        var_content[1] = variables[var_content[1]]
+                    try:
+                        var_content = var_content[0][int(var_content[1])]
+                    except IndexError:
+                        return print("Error: Index Out Of Range")
+                    except ValueError:
+                        return print("Error: Index Not A Number")
+                    
                 variables[var_name] = var_content
                 
 
