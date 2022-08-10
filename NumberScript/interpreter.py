@@ -254,16 +254,16 @@ class Interpreter():
             
             if code[j].startswith("?"):
                 re_code = code[j].replace("?", "", 1)
-                statements = re_code.split(":", 2)
+                statements = re_code.split("|", 2)
                 if Checker(statements[0], variables):
                     try:
-                        true_statements = statements[1].replace("|", " ")
+                        true_statements = statements[1].replace(":", " ")
                     except:
                         true_statements = statements[1]
                     self.interpret(Interpreter, true_statements, variables)
                 else:
                     try:
-                        false_statements = statements[2].replace("|", " ")
+                        false_statements = statements[2].replace(":", " ")
                     except:
                         false_statements = statements[2]
                     self.interpret(Interpreter, false_statements, variables)
