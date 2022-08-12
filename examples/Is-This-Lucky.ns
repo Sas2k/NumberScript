@@ -1,5 +1,5 @@
 %Is-This-lucky:Checks-If-The-Number-Is-Lucky
 0
 3lucky_num:9
-6n\10\?n=lucky_num:2n|2Is-The-Lucky-Number:2n|2Is-Not-The-Number
+6n\10\?n=lucky_num|2n+>2Is-The-Lucky-Number|2n+>2Is-Not-The-Number
 1
