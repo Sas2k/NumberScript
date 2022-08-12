@@ -25,7 +25,7 @@ pip install NumberScript
 
 ## Docs
 
-Documentation: https://github.com/Sas2k/NumberScript
+Documentation: https://sas2k.github.io/NumberScript
 
 ## CLI and repl
 
