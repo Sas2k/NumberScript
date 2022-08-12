@@ -8,7 +8,7 @@
 
 [NumberScript Discord-Invite](https://discord.gg/wRXR72zJ6W)
 
-Possibly the world's most simplest and restricted language.
+Possibly the world's simplest and restricted language.
 
 ## Installation (pip)
 
