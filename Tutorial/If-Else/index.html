@@ -278,9 +278,67 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          If-Else
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         If-Else
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whats-if-else" class="md-nav__link">
+    What's If Else?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-and-using-if-else-in-numberscript" class="md-nav__link">
+    Defining and Using If-Else in NumberScript
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    Exercises
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#even-or-odd" class="md-nav__link">
+    Even or Odd
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -328,6 +386,48 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whats-if-else" class="md-nav__link">
+    What's If Else?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-and-using-if-else-in-numberscript" class="md-nav__link">
+    Defining and Using If-Else in NumberScript
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    Exercises
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#even-or-odd" class="md-nav__link">
+    Even or Odd
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -341,9 +441,39 @@
 
 
 <h1 id="if-else-in-numberscript">If Else in NumberScript</h1>
+<p>In this section we will cover If and Else in NumberScript.</p>
+<h2 id="whats-if-else">What's If Else?</h2>
+<p>An If Else statement is a statement where is checks a statement and see whether it's True or False.
+If the Statement is False it will do the Else statement.</p>
+<p>like If you have a movie-ticket you can watch a movie else you can't watch it.</p>
+<h2 id="defining-and-using-if-else-in-numberscript">Defining and Using If-Else in NumberScript</h2>
+<p>now the basic structure of an If-Else is like this.</p>
+<pre><code>?statement|Do-If-True|else-do-this
+</code></pre>
+<p>now this is like the basic structure.
+You can nest if-else inside if-elses, to check more cases if needed.</p>
+<p>Here is an example of a program using If-Else,</p>
+<pre><code>%Password-Checker
+0
+3password:ThisIsCool
+3input:~Enter-Password&gt;
+?input=password|2Access-Granted|2Wrong-Password
+2Good-Bye
+1
+</code></pre>
 <blockquote>
-<p>⚠ Still Under Construction ⚠</p>
+<p>Side-Note: You can have variables, math (and even inputs(~)) for the statement. The logic gates aren't yet implemented for these (and, or, not ones).</p>
 </blockquote>
+<h2 id="exercises">Exercises</h2>
+<p>Now that you got the basics of the If-Else Sentences. try these exercises.</p>
+<h3 id="even-or-odd">Even or Odd</h3>
+<p>In this exercise you must create a program where it will take an input and checks whether it is Even or Odd.</p>
+<pre><code>Enter-Number&gt;4
+It's Even
+</code></pre>
+<pre><code>Enter-Number&gt;5
+It's Odd
+</code></pre>
 
               
             </article>
@@ -394,6 +524,10 @@
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy 2022 <a href="https://github.com/Sas2k">Sas2k</a>
+    </div>
   
   
     Made with
