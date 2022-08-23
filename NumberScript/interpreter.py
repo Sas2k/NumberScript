@@ -1,6 +1,11 @@
 from functools import reduce
 from operator import mod
 from random import randint
+from os import path, name
+
+import site
+
+Default_Libs_Path = site.getusersitepackages() + "\\NumberScript\\Libs" if name == "nt" else site.getusersitepackages() + "/NumberScript/Libs"
 
 def Calculate(removed_code: str, variables: dict) -> int:
     """Calculator"""
@@ -162,7 +167,7 @@ class Interpreter():
         """Initialize the interpreter"""
         pass
 
-    def interpret(self, code: str, variables_dict: dict = {}, function_dict: dict = {}) -> str:
+    def interpret(self, code: str, variables_dict: dict = {}, function_dict: dict = {}, library: bool = False) -> str:
         """Interprets the code"""
         code = code.split(" ")
         variables = variables_dict
@@ -172,8 +177,20 @@ class Interpreter():
                 variables = {}
             
             if code[j].startswith("1"):
-                variables = {}
-                return
+                break
+            
+            if code[j].startswith("#"):
+                recode = code[j].replace("#", "", 1)
+                file_location = f"{recode}.ns"
+                module_code = open(f"{file_location}", "r").read()
+                module_code = module_code.replace("\n", " ")
+                module_args = self.interpret(Interpreter, module_code, variables, functions, True)
+                module_varNames = list(module_args[0].keys())
+                module_funcNames = list(module_args[1].keys())
+                for x in range(0, len(module_args[0])):
+                    variables[module_varNames[x]] = module_args[0][module_varNames[x]]
+                for x in range(0, len(module_args[1])):
+                    functions[module_funcNames[x]] = module_args[1][module_funcNames[x]]
 
             if code[j].startswith("2"):
                 if code[j][1:] in variables.keys():
@@ -280,10 +297,10 @@ class Interpreter():
                 repeat_times = int(variables[recode[1]]) if recode[1] in variables.keys() else int(recode[1])
                 repeat_code = recode[2].replace(";", " ")
                 variables[repeat_name] = 0
-                variabless = variables
+                loop_variables = variables
                 for x in range(0, repeat_times):
-                    self.interpret(Interpreter, repeat_code, variabless)
-                    variabless[repeat_name] += 1
+                    self.interpret(Interpreter, repeat_code, loop_variables)
+                    loop_variables[repeat_name] += 1
 
             if code[j].startswith("~"):
                 recode = code[j].replace("~", "", 1)
@@ -292,7 +309,7 @@ class Interpreter():
             if code[j].startswith("7"):
                 recode = code[j].replace("7", "", 1).split("$", 2)
                 function_name = recode[0]
-                function_parameters = recode[1].split(",")
+                function_parameters = recode[1].split(",") if "," in recode[1] else [recode[1]]
                 function_code = recode[2].split("|")
                 functions[function_name] = [function_parameters, function_code]
 
@@ -329,4 +346,7 @@ class Interpreter():
                 for j in range(0, len(func_name[1])):
                     func_code += func_name[1][j] + " "
                 self.interpret(Interpreter, func_code, variables, functions)
+
+        if library == True:
+            return [variables, functions]
                 

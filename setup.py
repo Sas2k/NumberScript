@@ -5,12 +5,18 @@ with open('README.md') as f:
 
 setuptools.setup(
     name="NumberScript",
-    version="1.11.7",
+    version="1.12.0",
     description="possibly the world's most simplest and restricted language.",
     author="Sasen Perera",
     long_description=longest_description,
     long_description_content_type="text/markdown",
     packages=["NumberScript"],
     github_url="https://github.com/Sas2k/NumberScript",
-    license="MIT"
+    license="MIT",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6'
 )

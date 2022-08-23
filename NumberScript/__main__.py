@@ -10,6 +10,7 @@ Interpreter = interpreter.Interpreter
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-f", "--file", help="file to interpret")
+parser.add_argument("-m", "--module", help="module to interpret", action="store_true")
 parser.add_argument("-v", "--version", action="store_true", help="show version")
 args = parser.parse_args()
 
@@ -29,6 +30,7 @@ help = """
 % <- comment
 ^number[+\-\/\*\#]number <- Math-Operation-Start
 ?condition|True|False <- If-Else
+#path/to/file(don't put .ns at the end) <- Import
 """
 
 space = ""
@@ -42,7 +44,11 @@ if args.file:
     with open(args.file, "r") as file:
         code = file.read()
         code = code.replace("\n", " ")
-        Interpreter.interpret(Interpreter, code)
+        if args.module:
+            print(Interpreter.interpret(Interpreter, code, library=True))
+        else:
+            Interpreter.interpret(Interpreter, code)
+
 elif args.version:
     print(f"Version: {ver}")
 else:

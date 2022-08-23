@@ -82,5 +82,4 @@ You can find more examples in the `examples` folder.
 
 ## To-Do
 
-- [ ] Import and library system
 - [ ] Possibly OOP
