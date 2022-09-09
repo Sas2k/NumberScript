@@ -27,7 +27,7 @@ In the file write.
 
 Then run it with the below command,
 
-`python -m NumberScript -f location/to/file`
+`NumberScript -f location/to/file`
 
 then you will get the output of the below.
 
