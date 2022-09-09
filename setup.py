@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setuptools.setup(
     name="NumberScript",
-    version="1.12.0",
+    version="1.13.0",
     description="possibly the world's most simplest and restricted language.",
     author="Sasen Perera",
     long_description=longest_description,
@@ -18,5 +18,12 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    #adding executable
+    entry_points={
+        'console_scripts': [
+            'NumberScript = NumberScript.main:main',
+            'nspm = NumberScript.nspm:main'
+        ]
+    },
     python_requires='>=3.6'
 )

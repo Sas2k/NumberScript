@@ -21,7 +21,7 @@ pip install NumberScript
 - No spaces (Yup, you read that right)
 - Comments
 - Only 8 commands
-- A shell and a runner
+- A shell, a repl and a package manager
 
 ## Docs
 
@@ -42,6 +42,7 @@ commands:  0  |  1  |  2 (@string.index)  |  3  |  4  |  5  |  6 |  7
 input: ~
 random: *
 comments: %
+import: #
 arithmetic: ^
 Compare: = | ! | < | >
 operations: + | - | * | / |
@@ -83,3 +84,4 @@ You can find more examples in the `examples` folder.
 ## To-Do
 
 - [ ] Possibly OOP
+- [ ] Error Catching System

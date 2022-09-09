@@ -8,6 +8,11 @@ Which you can easily download from `pypi` (aka. `pip`)
 `pip install NumberScript`
 
 Now the interpreter is downloaded.
+we need to set it up Now run the command below.
+
+`nspm setup`
+
+> nspm: NumberScript Package Manager
 
 Now, create a file called.
 `Hello.ns`

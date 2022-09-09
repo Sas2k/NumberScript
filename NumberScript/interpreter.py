@@ -1,11 +1,10 @@
 from functools import reduce
 from operator import mod
 from random import randint
-from os import path, name
 
-import site
+import os
 
-Default_Libs_Path = site.getusersitepackages() + "\\NumberScript\\Libs" if name == "nt" else site.getusersitepackages() + "/NumberScript/Libs"
+Default_Libs_Path = "C:" + os.environ["homepath"] + "\\NumberScript\\Libs\\" if os.name == "nt" else os.environ["HOME"] + "/NumberScript/Libs/" 
 
 def Calculate(removed_code: str, variables: dict) -> int:
     """Calculator"""
@@ -167,7 +166,7 @@ class Interpreter():
         """Initialize the interpreter"""
         pass
 
-    def interpret(self, code: str, variables_dict: dict = {}, function_dict: dict = {}, library: bool = False) -> str:
+    def interpret(self, code: str, variables_dict: dict = {}, function_dict: dict = {}, debug_mode: bool = False,library: bool = False) -> str:
         """Interprets the code"""
         code = code.split(" ")
         variables = variables_dict
@@ -176,23 +175,17 @@ class Interpreter():
             if code[j].startswith("0"):
                 variables = {}
             
-            if code[j].startswith("1"):
+            elif code[j].startswith("1"):
                 break
             
-            if code[j].startswith("#"):
+            elif code[j].startswith("#"):
                 recode = code[j].replace("#", "", 1)
-                file_location = f"{recode}.ns"
+                file_location = f"{recode}.ns" if os.path.exists(f"{recode}.ns") else Default_Libs_Path + f"{recode}.ns"
                 module_code = open(f"{file_location}", "r").read()
                 module_code = module_code.replace("\n", " ")
-                module_args = self.interpret(Interpreter, module_code, variables, functions, True)
-                module_varNames = list(module_args[0].keys())
-                module_funcNames = list(module_args[1].keys())
-                for x in range(0, len(module_args[0])):
-                    variables[module_varNames[x]] = module_args[0][module_varNames[x]]
-                for x in range(0, len(module_args[1])):
-                    functions[module_funcNames[x]] = module_args[1][module_funcNames[x]]
+                module_args = self.interpret(Interpreter, module_code, variables, functions, library=True)
 
-            if code[j].startswith("2"):
+            elif code[j].startswith("2"):
                 if code[j][1:] in variables.keys():
                     for x in range(0, len(variables)):
                         var_names = list(variables.keys())
@@ -215,7 +208,7 @@ class Interpreter():
                 else:
                     print(code[j][1:])
 
-            if code[j].startswith("3"):
+            elif code[j].startswith("3"):
                 vars = code[j].replace("3", "", 1).split(":")
                 try:
                     var_name = vars[0]
@@ -256,20 +249,19 @@ class Interpreter():
                         return print("Error: Index Not A Number")
                     
                 variables[var_name] = var_content
-                
 
-            if code[j].startswith("^"):
+            elif code[j].startswith("^"):
                 removed_code = code[j].replace("^", "")
                 print(Calculate(removed_code, variables))
 
-            if code[j].startswith("%"):
+            elif code[j].startswith("%"):
                 continue
-            
-            if code[j].startswith("4"):
+
+            elif code[j].startswith("4"):
                 re_code = code[j].replace("4", "", 1)
                 print(Checker(re_code, variables))
-            
-            if code[j].startswith("?"):
+
+            elif code[j].startswith("?"):
                 re_code = code[j].replace("?", "", 1)
                 statements = re_code.split("|", 2)
                 if Checker(statements[0], variables):
@@ -285,13 +277,13 @@ class Interpreter():
                         false_statements = statements[2]
                     self.interpret(Interpreter, false_statements, variables)
 
-            if code[j] in variables.keys():
+            elif code[j] in variables.keys():
                 print(variables[code[j]])
 
-            if code[j].startswith("5"):
+            elif code[j].startswith("5"):
                 pass
 
-            if code[j].startswith("6"):
+            elif code[j].startswith("6"):
                 recode = code[j].replace("6", "", 1).split("\\", 2)
                 repeat_name = variables[recode[0]] if recode[0] in variables.keys() else recode[0]
                 repeat_times = int(variables[recode[1]]) if recode[1] in variables.keys() else int(recode[1])
@@ -302,24 +294,23 @@ class Interpreter():
                     self.interpret(Interpreter, repeat_code, loop_variables)
                     loop_variables[repeat_name] += 1
 
-            if code[j].startswith("~"):
+            elif code[j].startswith("~"):
                 recode = code[j].replace("~", "", 1)
-                input(recode)
+                input(recode if recode not in list(variables.keys()) else variables[recode])
 
-            if code[j].startswith("7"):
+            elif code[j].startswith("7"):
                 recode = code[j].replace("7", "", 1).split("$", 2)
                 function_name = recode[0]
                 function_parameters = recode[1].split(",") if "," in recode[1] else [recode[1]]
-                function_code = recode[2].split("|")
+                function_code = recode[2].split("$")
                 functions[function_name] = [function_parameters, function_code]
 
-            if code[j].startswith("*"):
+            elif code[j].startswith("*"):
                 recode = code[j].replace("*", "", 1).split("!", 1)
                 random_num = randint(recode[0], recode[1])
                 print(int(random_num))
 
-
-            if any(str(key) in code[j] for key in functions.keys()) and not code[j].startswith("7"):
+            elif any(str(key) in code[j] for key in functions.keys()) and not code[j].startswith("7"):
                 recode = code[j].split("$", 1)
                 func_name = functions[recode[0]]
                 func_params = recode[1].split(",")
@@ -346,6 +337,14 @@ class Interpreter():
                 for j in range(0, len(func_name[1])):
                     func_code += func_name[1][j] + " "
                 self.interpret(Interpreter, func_code, variables, functions)
+                return
+
+            else:
+                pass
+            
+            if debug_mode == True:
+                print(variables)
+                print(functions)
 
         if library == True:
             return [variables, functions]
