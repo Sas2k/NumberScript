@@ -2,8 +2,8 @@
 
 # NumberScript
 
-![PyPI - Downloads](https://img.shields.io/pypi/dm/NumberScript?color=blue&style=for-the-badge)
-![PyPI - Downloads](https://img.shields.io/pypi/dw/NumberScript?color=blue&style=for-the-badge)
+[![Downloads-Month](https://pepy.tech/badge/numberscript/month)](https://pepy.tech/project/numberscript)
+[![Downloads-Total](https://pepy.tech/badge/numberscript)](https://pepy.tech/project/numberscript)
 ![Discord](https://img.shields.io/discord/1005410273609400402?label=Discord&style=social)
 
 [NumberScript Discord-Invite](https://discord.gg/wRXR72zJ6W)
