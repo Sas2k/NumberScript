@@ -168,6 +168,7 @@ class Interpreter():
 
     def interpret(self, code: str, variables_dict: dict = None, function_dict: dict = None, debug_mode: bool = False,library: bool = False) -> str:
         """Interprets the code"""
+        code = code.replace("\n", " ").replace("\t", "").replace("\r\n", " ").replace("\r", " ")
         code = code.split(" ")
         variables_dict = {} if variables_dict is None else variables_dict
         function_dict = {} if function_dict is None else function_dict

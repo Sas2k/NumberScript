@@ -38,7 +38,7 @@ Here is an example of a program using If-Else,
 
 Now that you got the basics of the If-Else Sentences. try these exercises.
 
-### Even or Odd
+### 1) Even or Odd
 
 In this exercise you must create a program where it will take an input and checks whether it is Even or Odd.
 

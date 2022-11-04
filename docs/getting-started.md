@@ -10,7 +10,7 @@ Which you can easily download from `pypi` (aka. `pip`)
 Now the interpreter is downloaded.
 we need to set it up Now run the command below.
 
-`nspm setup`
+`nspm setup` _also you only need to run this command once_
 
 > nspm: NumberScript Package Manager
 

@@ -7,6 +7,8 @@ nav:
     - Basics: Tutorial/basics.md
     - Variables: Tutorial/Variables.md
     - If-Else: Tutorial/If-Else.md
+    - Loops: Tutorial/loops.md
+    - Functions: Tutorial/Functions.md
   - About: about.md
 theme:
   name: material

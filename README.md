@@ -1,10 +1,10 @@
-<img src="docs\images\Logo-256.png" alt="Logo of NumberScript"/>
+<img src="https://raw.githubusercontent.com/Sas2k/NumberScript/main/docs/images/Logo-256.png" alt="Logo of NumberScript"/>
 
 # NumberScript
 
 [![Downloads-Month](https://pepy.tech/badge/numberscript/month)](https://pepy.tech/project/numberscript)
 [![Downloads-Total](https://pepy.tech/badge/numberscript)](https://pepy.tech/project/numberscript)
-![Discord](https://img.shields.io/discord/1005410273609400402?label=Discord&style=social)
+[![Discord](https://img.shields.io/discord/1005410273609400402?label=Discord&style=for-the-badge&color=purple)]((https://discord.gg/wRXR72zJ6W))
 
 [NumberScript Discord-Invite](https://discord.gg/wRXR72zJ6W)
 
