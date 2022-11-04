@@ -2,32 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://sas2k.github.io/NumberScript/</loc>
-         <lastmod>2022-09-09</lastmod>
+         <lastmod>2022-11-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sas2k.github.io/NumberScript/about/</loc>
-         <lastmod>2022-09-09</lastmod>
+         <lastmod>2022-11-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sas2k.github.io/NumberScript/getting-started/</loc>
-         <lastmod>2022-09-09</lastmod>
+         <lastmod>2022-11-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sas2k.github.io/NumberScript/Tutorial/Functions/</loc>
+         <lastmod>2022-11-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sas2k.github.io/NumberScript/Tutorial/If-Else/</loc>
-         <lastmod>2022-09-09</lastmod>
+         <lastmod>2022-11-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sas2k.github.io/NumberScript/Tutorial/Variables/</loc>
-         <lastmod>2022-09-09</lastmod>
+         <lastmod>2022-11-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sas2k.github.io/NumberScript/Tutorial/basics/</loc>
-         <lastmod>2022-09-09</lastmod>
+         <lastmod>2022-11-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sas2k.github.io/NumberScript/Tutorial/loops/</loc>
+         <lastmod>2022-11-04</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
